@@ -1,0 +1,30 @@
+spring:
+  application: #别名
+    name: itoken-eureka
+  boot:
+    admin:
+      client: #服务监控 客户端
+        url: http://localhost:8084
+  zipkin: #链路追踪 客户端
+    base-url: http://localhost:9411
+
+server: #端口号
+  port: 8761
+
+eureka: #服务注册与发现
+  instance: #服务器ip
+    hostname: localhost #本机
+  client: #客户端
+    registerWithEureka: false #当前服务器不能注册为客户端
+    fetchRegistry: false
+    serviceUrl: #服务器路径
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info
