@@ -20,7 +20,7 @@ server:
 
 feign:
   hystrix:
-    enable: true
+    enabled: true
 
 eureka:
   client:
